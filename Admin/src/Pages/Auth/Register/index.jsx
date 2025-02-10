@@ -5,22 +5,37 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';  
 import theme from '../../../components/Theme/theme';  
 import fetchData from '../../../Utils/FetchData';
+import notify from '../../../Utils/notify';
+import { data, useNavigate } from 'react-router-dom';
 
 
-const handleFormSubmit = async(values) => {  
-  const res = fetchData(import.meta.env.PORT+`auth/register`,{
-    method:'POST',
-    headers:{
-      'Content-Type': 'application/json',
-    },
-    body:JSON.stringify(values)
+
+
+
+
+const Register = () => {
+  const navigate = useNavigate()
+  const handleFormSubmit = async(values) => {  
     
-  })
-  const data = res?.json()
-  console.log(data)
-};  
-
-const Register = () => {  
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/register',{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(values)
+        
+        
+      })
+      const data = await res?.json()
+      notify('success', data.message)
+      navigate('/auth/login')
+    } catch (error) {
+      console.log(error)
+      notify('error', data.message)
+    }
+  };  
+  
   const [showPassword, setShowPassword] = React.useState(false);  
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);  
@@ -75,6 +90,7 @@ const Register = () => {
             padding: '20px 30px',
             '@media(max-width:1100px)':{
               flexDirection:'column',
+              justifyContent:'center',
               padding:'100px 20px'
             },
             '@media(max-width:354px)':{
@@ -89,11 +105,15 @@ const Register = () => {
                 
               }
             }}>  
-              <Typography variant='h2' fontWeight={'550'} color={theme.palette.bgMain.secondary}>  
+              <Typography variant='h2' fontWeight={'550'} color={theme.palette.bgMain.secondary} sx={{
+                '@media(max-width:480px)':{
+                  fontSize:'30px'
+                }
+              }}>  
                 Welcome To Our Website  
               </Typography>  
             </Stack>  
-            <Stack width={'30%'} display={'flex'} gap={'10px'} bgcolor={theme.palette.bgMain.secondary} padding={'20px 20px'} borderRadius={'5px'} sx={{
+            <Stack width={'30%'} height={'auto'} display={'flex'} gap={'10px'} bgcolor={theme.palette.bgMain.secondary} padding={'20px 20px'} boxShadow={'0 0 10px 5px rgba(0,0,0,0.2)'} borderRadius={'5px'} sx={{
               '@media(max-width:1100px)':{
                 width:'60%'
               },
@@ -168,6 +188,7 @@ const Register = () => {
                 {touched.password && errors.password && <Typography color="error">{errors.password}</Typography>}  
               </FormControl>  
               <Button variant='contained' onClick={handleSubmit}>Submit</Button>  
+              <Button variant='text' onClick={()=>navigate('/auth/login')} sx={{fontSize:'12px', textTransform:'none'}}>Already have an account?</Button>
             </Stack>  
           </Stack>  
         </Box>  
