@@ -1,5 +1,11 @@
 
-
+.navLinks{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px 15px;
+    color: #8F92A1;
+    
+}
 
 .active{
     background-color: #4c1cc9;

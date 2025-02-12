@@ -12,6 +12,7 @@ const theme = createTheme({
     bgMain: {
         main: '#0F1026',
         secondary: '#fff',
+        lightPurple:'#d2b4de',
     },
     textColor: {
         text: '#8F92A1',

@@ -1,8 +1,10 @@
 import {create} from 'zustand';  
 
 const authSlice = create((set) => ({  
-  token: localStorage.getItem('token') || null,  
-  setToken: (newToken) => set({ token: newToken }),  
+  token: localStorage.getItem('token') || null,
+  username:null,
+  setUserName: (newUser) => set({username: newUser}),
+  setToken: (newToken) => set({ token: newToken }),
   clearToken: () => set({ token: localStorage.removeItem('token') }),  
 }));  
 

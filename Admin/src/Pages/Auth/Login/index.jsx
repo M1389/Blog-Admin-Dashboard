@@ -16,8 +16,11 @@ import authSlice from '../../../Store/authSlice.js';
 
 const Login = () => {
   const navigate = useNavigate()
-  const handleFormSubmit = async(values) => {  
   const setToken = authSlice((state)=> state.setToken)
+  const setUserName = authSlice((state)=> state.setUserName)
+  const handleFormSubmit = async(values) => {  
+  
+  
     try {
       const res = await fetch('http://localhost:5000/api/auth',{
         method:'POST',
@@ -31,6 +34,7 @@ const Login = () => {
       const data = await res?.json()
       notify('success', data.message)
       setToken(data?.token)
+      setUserName(data?.username)
       localStorage.setItem('token', data.token)
       navigate('/')
     } catch (error) {
