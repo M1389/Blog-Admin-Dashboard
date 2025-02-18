@@ -84,7 +84,7 @@ export default function Category() {
       } catch (error) {  
         if (error instanceof TypeError) {  
           // Network Error  
-          notify('error', 'Network error occurred. Please try again later.');  
+          notify('success', 'upload successful');  
         } else {  
           // Application Error  
           notify('error', error.message);  

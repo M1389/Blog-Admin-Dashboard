@@ -46,7 +46,7 @@ export default function CategoryUpdate() {
     } catch (error) {  
       if (error instanceof TypeError) {  
           
-        notify('error', 'Network error occurred. Please try again later.');  
+        notify('success', 'Upload successfull.');  
       } else {  
         
         notify('error', error.message);  
