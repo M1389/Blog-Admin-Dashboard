@@ -88,9 +88,20 @@ export default function CategoryUpdate() {
   }
   return (
     <>
-      <Box component={'section'} width={'80%'} p={'40px 30px'}>
+      <Box component={'section'} width={'80%'} p={'40px 30px'} sx={{
+        '@media(max-width:1100px)':{
+          width:'90%',
+          margin:'40px auto'
+        }
+      }}>
         <Typography variant="h4" fontWeight={'500'} m={'15px 0'}>Update Category</Typography>
-        <Stack width={'50%'} border={`2px solid ${theme.palette.primary.main}`} p={'20px'} borderRadius={'20px'}>
+        <Stack width={'50%'} border={`2px solid ${theme.palette.primary.main}`} p={'20px'} borderRadius={'20px'} sx={{
+          '@media(max-width:1100px)':{
+            width:'100%',
+            margin:'20px 0',
+            marginLeft:'auto'
+          }
+        }}>
           <form onSubmit={handleSubmit}>  
             <input type="file" accept="image/*" onChange={handleFileChange} />  
             <Button variant='outlined' type="submit">Upload</Button>  

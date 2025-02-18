@@ -30,7 +30,7 @@ export default function Category() {
         const data = await res?.json()
         setCategories(data?.data)
         
-        notify('success', data.message)
+        notify('success', 'Get All Categories Successfully')
         } catch (error) {
         console.log(error)
         notify('error', data.message)
@@ -120,11 +120,21 @@ export default function Category() {
     }
 
     const items = categories?.map((e, index)=>(
-      <Stack key={index} width={'30%'} bgcolor={theme.palette.bgMain.main} borderRadius={'5px'} paddingBottom={'10px'} overflow={'hidden'}>
+      <Stack key={index} width={'30%'} bgcolor={theme.palette.bgMain.main} borderRadius={'5px'} paddingBottom={'10px'} overflow={'hidden'} sx={{
+        '@media(max-width:1100px)':{
+          width:'50%'
+        },
+        '@media(max-width:730px)':{
+          width:'80%'
+        },
+        '@media(max-width:500px)':{
+          width:'100%'
+        },
+      }}>
         <Box component={'img'} width={'100%'} height={'60%'} sx={{objectFit:'cover'}} src={import.meta.env.VITE_DATA_API + e.image}/>
-        <Stack display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'}>
+        <Stack display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} flexWrap={'wrap'}>
           <Typography variant="body2" fontWeight={'600'} m={'10px 10px'} fontSize={'25px'} color={theme.palette.textColor.text}>{e.title}</Typography>
-          <Typography variant="body2" fontWeight={'600'} m={'10px 10px'} fontSize={'12px'} color={theme.palette.textColor.text}>{e.createdAt}</Typography>
+          <Typography variant="body2" fontWeight={'600'} m={'10px 10px'} fontSize={'12px'} color={theme.palette.textColor.text}>{e.updatedAt}</Typography>
         </Stack>
         {e.isActive ? <Button variant='outlined' sx={{color:'#28b463', width:'80px', margin:'10px', border:'1px solid #28b463'}}>Active</Button> : <Button variant='outlined' sx={{color:'#e74c3c', width:'150px', margin:'10px', border:'1px solid #e74c3c'}}>Not Active</Button>}
         <Button variant='outlined' sx={{margin:'0 10px'}} onClick={()=>navigate(`/category/update/${e._id}`)}>Update</Button>
@@ -133,14 +143,24 @@ export default function Category() {
   
   return (
     <>
-      <Box component={'section'} width={'80%'} p={'30px 30px'}>
+      <Box component={'section'} width={'80%'} p={'30px 30px'} sx={{
+        '@media(max-width:1100px)':{
+          margin:'30px auto'
+        },
+        '@media(max-width:400px)':{
+          width:'95%',
+          marginLeft:'auto',
+          padding:'30px 0',
+          paddingLeft:'40px'
+        },
+      }}>
         <Typography variant='h2' fontSize={'40px'} fontWeight={'600'} >
           Categories
         </Typography>
         <Button variant={'contained'} onClick={handleClickOpen} sx={{bgcolor:theme.palette.bgMain , margin:'20px 0'}} >
           Create New Category
         </Button>
-        <Stack display={'flex'} flexDirection={'row'} gap={'12px'}>
+        <Stack display={'flex'} flexDirection={'row'} gap={'12px'} flexWrap={'wrap'}>
             {items}
         </Stack>
       </Box>
