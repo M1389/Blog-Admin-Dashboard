@@ -23,7 +23,18 @@ export default function Footer() {
           flexDirection:'column',
           justifyContent:'space-between',
           alignItems:'center',
-          padding:'30px 0'
+          padding:'30px 0',
+          '@media(max-width:900px)':{
+            position:'fixed',
+            top:'0',
+            right:'0',
+            width:'65px',
+            hieght:'100vh'
+          },
+          '@media(max-width:600px)':{
+            display:'none'
+          },
+          zIndex:'100'
         }}>
 
             <Typography variant='h6' sx={{

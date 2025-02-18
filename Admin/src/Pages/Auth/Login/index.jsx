@@ -35,6 +35,7 @@ const Login = () => {
       notify('success', data.message)
       setToken(data?.token)
       setUserName(data?.username)
+      localStorage.setItem('username', data?.username)
       localStorage.setItem('token', data.token)
       navigate('/')
     } catch (error) {

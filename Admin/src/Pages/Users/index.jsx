@@ -17,6 +17,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { useNavigate } from 'react-router-dom';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -24,6 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Users() {
+  const navigate = useNavigate()
   const token = localStorage.getItem('token')
   const [users , setUsers] = useState()
   const [open, setOpen] = React.useState(false);
@@ -39,7 +41,7 @@ export default function Users() {
           },
         })
         const data = await res?.json()
-        console.log(data)
+        
         setUsers(data?.data)
         
         notify('success', data.message)
@@ -87,7 +89,7 @@ export default function Users() {
     <Stack width={'30%'} bgcolor={'#212f3d'}  display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.role}</Typography> </Stack>
     <Stack width={'30%'} bgcolor={'#212f3d'}  display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.phoneNumber}</Typography> </Stack>
     <Stack width={'30%'} bgcolor={'#212f3d'} sx={{borderTopRightRadius:'10px', borderBottomRightRadius:'10px'}} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e._id.slice(0,4)}...</Typography> </Stack>
-    <IconButton sx={{margin:'0 10px'}}>
+    <IconButton onClick={()=> navigate(`/user/update/${e._id}`)} sx={{margin:'0 10px'}}>
       <PencilSquareIcon width={'22px'} height={'22px'} color='white'/>
     </IconButton>
     <IconButton onClick={()=>handleClickOpen(e._id)} sx={{margin:'0 10px'}}>
@@ -100,14 +102,24 @@ export default function Users() {
   
   return (
     <>
-      <Box component={'section'}  width={'80%'} p={'30px 20px'} ml={'auto'}>
-        <Stack width={'100%'} m={'auto'} bgcolor={theme.palette.bgMain.main} borderRadius={'5px'} p={'15px'} display={'flex'} justifyContent={'center'}>
+      <Box component={'section'}  width={'80%'} p={'30px 20px'} ml={'auto'} zIndex={'50'} sx={{
+        '@media(max-width:1050px)':{
+          width:'calc(100% - 75px)',
+          margin: '0 auto',
+          overflow:'scroll'
+        }
+      }}>
+        <Stack width={'100%'} m={'auto'} bgcolor={theme.palette.bgMain.main} borderRadius={'5px'} p={'15px'} display={'flex'} justifyContent={'center'} sx={{
+          '@media(max-width:1050px)':{
+            width:'700px'
+          }
+        }}>
           <Stack display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
             <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Name</Typography> </Stack>
             <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Role</Typography> </Stack>
             <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Phone Number</Typography> </Stack>
             <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Id</Typography> </Stack>
-            <Stack width={'11%'}> <Typography variant='h6' color='white' fontSize={'18px'}>Edit</Typography> </Stack>
+            <Stack width={'11%'} display={'flex'} flexDirection={'row'} alignItems={'center'}> <Typography variant='h6' color='white' fontSize={'18px'}>Edit</Typography> </Stack>
             
             
           </Stack>
@@ -119,6 +131,7 @@ export default function Users() {
           keepMounted
           onClose={handleClose}
           aria-describedby="alert-dialog-slide-description"
+          
         >
           <DialogTitle>{"Are you sure you want to delete this user?"}</DialogTitle>
           <DialogContent>
