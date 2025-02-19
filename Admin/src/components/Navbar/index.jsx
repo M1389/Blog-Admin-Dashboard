@@ -100,8 +100,9 @@ export default function Navbar() {
             alignItems:'center',
             zIndex:'90'
           },
-          '@media(max-width:445px)':{
-            width:'45px'
+          '@media(max-width:600px)':{
+            width:'35px',
+            marginRight:'20px'
           },
         }}>
           <IconButton onClick={()=>handleOpen()} sx={{zIndex:'5'}}>

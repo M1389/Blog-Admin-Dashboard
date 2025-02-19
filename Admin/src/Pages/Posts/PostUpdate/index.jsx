@@ -120,18 +120,26 @@ export default function PostUpdate() {
 
   return (
     <>
-      <Box component={"section"} width={"80%"} p={"30px 30px"}>
+      <Box component={"section"} width={"80%"} p={"30px 30px"} sx={{
+            '@media(max-width:1100px)':{
+                margin:'30px auto'
+            },
+            '@media(max-width:600px)':{
+                width:'95%',
+                marginLeft:'auto'
+            },
+        }}>
         <Typography variant="h2" fontSize={"40px"} fontWeight={"600"}>
           Update the post
         </Typography>
         <Stack>
             <Stack m={'20px 0'}>
-                <Typography variant="h5" fontSize={'20px'} bgcolor={theme.palette.primary.main} color="white" width={'35%'} borderRadius={'3px'} p={'5px'} m={'10px 0'}>Choose the image for Post:</Typography>
+                <Typography variant="h5" fontSize={'20px'} bgcolor={theme.palette.primary.main} color="white"  borderRadius={'3px'} p={'5px'} m={'10px 0'} >Choose the image for Post:</Typography>
                 <form onSubmit={handleSubmit}>  
                     <input type="file" accept="image/*" onChange={handleFileChange} />  
                     <Button variant='outlined' type="submit">Upload</Button>  
                 </form>
-                <Typography variant="h5" fontWeight={'600'} fontSize={'20px'} m={'20px 0'} bgcolor={theme.palette.primary.main} color="white" width={'35%'} borderRadius={'3px'} p={'5px'} >Uploaded image</Typography>
+                <Typography variant="h5" fontWeight={'600'} fontSize={'20px'} m={'20px 0'} bgcolor={theme.palette.primary.main} color="white"  borderRadius={'3px'} p={'5px'} >Uploaded image</Typography>
                 {uploadImage && 
                 <Box component={'img'} src={import.meta.env.VITE_DATA_API + uploadImage} sx={{width:'20%', margin:'10px 0'}} alt={uploadImage}/>
                 }

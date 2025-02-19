@@ -33,12 +33,20 @@ export default function PostDetails() {
       },[])
   return (
     <>
-        <Box component={'section'} width={'80%'} p={'30px 30px'}>
+        <Box component={'section'} width={'80%'} p={'30px 30px'} sx={{
+            '@media(max-width:1100px)':{
+                margin:'30px auto'
+            },
+            '@media(max-width:600px)':{
+                width:'95%',
+                marginLeft:'auto'
+            },
+        }}>
             <Typography variant='h2' fontSize={'40px'} fontWeight={'600'} >
                 Post Details
             </Typography>
             <Stack m={'20px 0'} bgcolor={theme.palette.bgMain.main} p={'20px'} borderRadius={'10px'}>
-                <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
+                <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'} gap={'20px'} flexWrap={'wrap'}>
                     <Typography variant='h2' fontSize={'25px'} fontWeight={'600'} color={theme.palette.textColor.header}>
                         {post?.title}
                     </Typography>
