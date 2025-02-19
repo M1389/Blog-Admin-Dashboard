@@ -6,4 +6,7 @@ import NotFound from "./NotFound";
 import Home from "./Home";
 import UserUpdate from "./Users/UserUpdate";
 import CategoryUpdate from "./Category/CategoryUpdate";
-export {Category, Users, Posts, Comments, NotFound , Home , UserUpdate  , CategoryUpdate};
+import PostUpdate from "./Posts/PostUpdate";
+import CreatePost from "./Posts/CreatePost";
+import PostDetails from "./Posts/PostDetails";
+export {Category, Users, Posts, Comments, NotFound , Home , UserUpdate  , CategoryUpdate , PostUpdate , CreatePost , PostDetails};
