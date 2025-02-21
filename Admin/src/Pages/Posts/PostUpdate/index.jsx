@@ -86,7 +86,7 @@ export default function PostUpdate() {
     }
   };
 
-  //Create the Post
+  //Update the Post
   const updatePost = async()=>{
       
     try {  

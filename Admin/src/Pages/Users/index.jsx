@@ -2,13 +2,6 @@ import { Box, Button, Checkbox, IconButton, Stack, Typography } from '@mui/mater
 import React, { useEffect, useState } from 'react'
 import notify from '../../Utils/notify'
 import theme from '../../components/Theme/theme'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import Dialog from '@mui/material/Dialog';

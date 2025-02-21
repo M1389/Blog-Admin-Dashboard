@@ -45,7 +45,7 @@ export default function PostDetails() {
             <Typography variant='h2' fontSize={'40px'} fontWeight={'600'} >
                 Post Details
             </Typography>
-            <Stack m={'20px 0'} bgcolor={theme.palette.bgMain.main} p={'20px'} borderRadius={'10px'}>
+            <Stack m={'20px 0'} bgcolor={theme.palette.bgMain.lightDarkGray} p={'20px'} borderRadius={'10px'}>
                 <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'} gap={'20px'} flexWrap={'wrap'}>
                     <Typography variant='h2' fontSize={'25px'} fontWeight={'600'} color={theme.palette.textColor.header}>
                         {post?.title}
