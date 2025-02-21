@@ -13,7 +13,7 @@ export default function App() {
   const navigate = useNavigate()
   return (
     <>
-      <Box display={'flex'} flexDirection={'row'}>
+      <Box display={'flex'} flexDirection={'row'}  height={'100vh'} flexGrow={1} >
       <Navbar/>
       
         <Routes>  

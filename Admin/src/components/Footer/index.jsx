@@ -29,7 +29,7 @@ export default function Footer() {
             top:'0',
             right:'0',
             width:'65px',
-            hieght:'100vh'
+            height:'100vh'
           },
           '@media(max-width:600px)':{
             display:'none'

@@ -89,6 +89,7 @@ export default function CategoryUpdate() {
   return (
     <>
       <Box component={'section'} width={'80%'} p={'40px 30px'} sx={{
+        overflowY:'scroll',
         '@media(max-width:1100px)':{
           width:'90%',
           margin:'40px auto'
