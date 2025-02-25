@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';  
-import { Box, Button, InputAdornment, Stack, TextField, Typography } from '@mui/material';  
+import { Box, Button, InputAdornment, Stack, TextField, Typography, useTheme } from '@mui/material';  
 import { UserCircleIcon } from '@heroicons/react/24/outline';  
 import { DevicePhoneMobileIcon } from '@heroicons/react/24/outline';  
 import { KeyIcon } from '@heroicons/react/24/outline';  
-import theme from '../../../components/Theme/theme';  
 import { useNavigate, useParams } from 'react-router-dom';  
 import { Formik, Form, Field, ErrorMessage } from 'formik';  
 import * as Yup from 'yup';  
@@ -29,6 +28,7 @@ const validationSchema = Yup.object({
  
 
 export default function UserUpdate() {  
+  const theme = useTheme()
   const navigate = useNavigate();  
   const {id} = useParams()
   const onSubmit = async (values, { setSubmitting }) => {  

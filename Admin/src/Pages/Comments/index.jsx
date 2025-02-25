@@ -1,7 +1,6 @@
-import { Box, Button, Checkbox, FormControlLabel, IconButton, Stack, Switch, Typography } from '@mui/material'
+import { Box, Button, Checkbox, FormControlLabel, IconButton, Stack, Switch, Typography, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import notify from '../../Utils/notify'
-import theme from '../../components/Theme/theme';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -16,6 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Comments() {
+  const theme = useTheme()
   const token = localStorage.getItem('token')
   const [comments , setComments] = useState();
   const [commentId , setCommentId] = useState();

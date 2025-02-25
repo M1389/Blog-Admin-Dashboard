@@ -1,6 +1,5 @@
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
+import { Box, Button, IconButton, Stack, Typography, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import theme from '../../components/Theme/theme'
 import notify from '../../Utils/notify'
 import { useNavigate } from 'react-router-dom'
 import Divider from '@mui/material/Divider';  
@@ -9,6 +8,7 @@ import { TrashIcon } from '@heroicons/react/24/outline'
 
 
 export default function Posts() {
+  const theme = useTheme()
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
   const [posts , setPosts] = useState()
@@ -25,9 +25,9 @@ export default function Posts() {
         })
         const data = await res?.json()
         setPosts(data?.data)
-        console.log(posts)
         
-        notify('success', 'Get All Posts Successfully')
+        
+        
         } catch (error) {
         console.log(error)
         

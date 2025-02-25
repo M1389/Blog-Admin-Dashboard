@@ -1,6 +1,5 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import theme from '../../components/Theme/theme';
 import notify from '../../Utils/notify';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -11,6 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from 'react-router-dom';
 
 export default function Category() {
+  const theme = useTheme()
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
   const [categories , setCategories] = useState();
@@ -30,7 +30,7 @@ export default function Category() {
         const data = await res?.json()
         setCategories(data?.data)
         
-        notify('success', 'Get All Categories Successfully')
+        
         } catch (error) {
         console.log(error)
         notify('error', data.message)

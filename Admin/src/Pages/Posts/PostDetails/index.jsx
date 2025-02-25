@@ -1,6 +1,6 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
+import { Box, Button, Stack, Typography, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import theme from '../../../components/Theme/theme'
+
 import { useNavigate, useParams } from 'react-router-dom'
 import notify from '../../../Utils/notify'
 
@@ -9,6 +9,7 @@ export default function PostDetails() {
     const [post , setPost] = useState()
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
+    const theme = useTheme()
     useEffect(()=>{
         (async()=>{
           try {

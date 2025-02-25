@@ -1,7 +1,6 @@
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Stack, TextField, Typography, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import notify from "../../../Utils/notify";
-import theme from "../../../components/Theme/theme";
 import { useNavigate } from "react-router-dom";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,6 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function CreatePost() {
+    const theme = useTheme()
     const [file , setFile] = useState()
     const [categories , setCategories] = useState();
     const [uploadImage , setUploadImage] = useState()

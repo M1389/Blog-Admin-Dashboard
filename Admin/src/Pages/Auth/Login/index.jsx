@@ -1,9 +1,9 @@
-import { Box, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField, Typography } from '@mui/material';  
+import { Box, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField, Typography, useTheme } from '@mui/material';  
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';  
 import React from 'react';  
 import { Formik } from 'formik';  
 import * as Yup from 'yup';  
-import theme from '../../../components/Theme/theme';  
+
 import fetchData from '../../../Utils/FetchData';
 import notify from '../../../Utils/notify';
 import { data, useNavigate } from 'react-router-dom';
@@ -16,6 +16,7 @@ import authSlice from '../../../Store/authSlice.js';
 
 const Login = () => {
   const navigate = useNavigate()
+  const theme = useTheme()
   const setToken = authSlice((state)=> state.setToken)
   const setUserName = authSlice((state)=> state.setUserName)
   const handleFormSubmit = async(values) => {  

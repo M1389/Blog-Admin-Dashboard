@@ -1,10 +1,11 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, Typography, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import theme from '../Theme/theme'
 import authSlice from '../../Store/authSlice'
 
 export default function Footer() {
+  const theme = useTheme()
   const location = useLocation()
   const username = authSlice((state)=> state.username)
   const clearToken = authSlice((state)=> state.clearToken)

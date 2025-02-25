@@ -1,10 +1,10 @@
-import { Box, Button, FormControlLabel, Stack, Switch, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControlLabel, Stack, Switch, TextField, Typography, useTheme } from '@mui/material'
 import React, { useState } from 'react'
-import theme from '../../../components/Theme/theme';
 import notify from '../../../Utils/notify';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function CategoryUpdate() {
+  const theme = useTheme()
   const navigate = useNavigate()
   const [file, setFile] = useState(null); 
   const [uploadImage , setUploadImage] = useState()

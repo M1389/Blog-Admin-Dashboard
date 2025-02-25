@@ -1,7 +1,6 @@
-import { Box, Button, Checkbox, IconButton, Stack, Typography } from '@mui/material'
+import { Box, Button, Checkbox, IconButton, Stack, Typography, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import notify from '../../Utils/notify'
-import theme from '../../components/Theme/theme'
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import Dialog from '@mui/material/Dialog';
@@ -18,6 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Users() {
+  const theme = useTheme()
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
   const [users , setUsers] = useState()
@@ -37,7 +37,7 @@ export default function Users() {
         
         setUsers(data?.data)
         
-        notify('success', data.message)
+        
         } catch (error) {
         console.log(error)
         notify('error', data.message)
@@ -78,12 +78,12 @@ export default function Users() {
 
   const items = users?.map((e,index)=> (
   <Stack key={index} display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
-    <Stack width={'30%'} bgcolor={'#212f3d'} sx={{borderTopLeftRadius:'10px', borderBottomLeftRadius:'10px'}} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.username}</Typography> </Stack>
-    <Stack width={'30%'} bgcolor={'#212f3d'}  display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.role}</Typography> </Stack>
-    <Stack width={'30%'} bgcolor={'#212f3d'}  display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.phoneNumber}</Typography> </Stack>
-    <Stack width={'30%'} bgcolor={'#212f3d'} sx={{borderTopRightRadius:'10px', borderBottomRightRadius:'10px'}} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e._id.slice(0,4)}...</Typography> </Stack>
+    <Stack width={'30%'} bgcolor={theme.palette.primary.main} sx={{borderTopLeftRadius:'10px', borderBottomLeftRadius:'10px'}} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.username}</Typography> </Stack>
+    <Stack width={'30%'} bgcolor={theme.palette.primary.main}  display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.role}</Typography> </Stack>
+    <Stack width={'30%'} bgcolor={theme.palette.primary.main}  display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e.phoneNumber}</Typography> </Stack>
+    <Stack width={'30%'} bgcolor={theme.palette.primary.main} sx={{borderTopRightRadius:'10px', borderBottomRightRadius:'10px'}} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>{e._id.slice(0,4)}...</Typography> </Stack>
     <IconButton onClick={()=> navigate(`/user/update/${e._id}`)} sx={{margin:'0 10px'}}>
-      <PencilSquareIcon width={'22px'} height={'22px'} color='white'/>
+      <PencilSquareIcon width={'22px'} height={'22px'} color={theme.palette.primary.main}/>
     </IconButton>
     <IconButton onClick={()=>handleClickOpen(e._id)} sx={{margin:'0 10px'}}>
       <TrashIcon width={'22px'} height={'22px'} color={'red'}/>
@@ -108,10 +108,10 @@ export default function Users() {
           }
         }}>
           <Stack display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Name</Typography> </Stack>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Role</Typography> </Stack>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Phone Number</Typography> </Stack>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color='white' fontSize={'18px'}>Id</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Name</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Role</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Phone Number</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Id</Typography> </Stack>
             <Stack width={'11%'} display={'flex'} flexDirection={'row'} alignItems={'center'}> <Typography variant='h6' color='white' fontSize={'18px'}>Edit</Typography> </Stack>
             
             
