@@ -12,8 +12,11 @@ import { Bars3Icon } from '@heroicons/react/24/outline';
 import { SunIcon } from '@heroicons/react/24/outline';
 import { MoonIcon } from '@heroicons/react/24/outline';
 import Switch from '@mui/material/Switch';
+import authSlice from '../../Store/authSlice';
+import { HomeIcon } from '@heroicons/react/24/outline';
 
 export default function Navbar() {
+  const clearToken = authSlice((state)=> state.clearToken)
   const theme = useTheme()
   const location = useLocation()
   const [open , isOpen] = useState(true)
@@ -40,6 +43,15 @@ export default function Navbar() {
 
   //theme switch
   const [dark , setDark] = useState(false)
+  const setTheme = authSlice((state)=> state.setTheme)
+  
+  const handleTheme = ()=>{
+    setDark(prevDark => !prevDark)
+    setTheme(dark)
+    localStorage.setItem('theme', dark)
+    
+  
+  }
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -103,11 +115,12 @@ export default function Navbar() {
       {location.pathname.includes('register') || location.pathname.includes('login') ? '' : 
       <>
         <Box component={'section'} sx={{
-          
+          display:'flex',
+          flexDirection:'column',
           width:'275px',
           height:'100vh',
           backgroundColor: theme.palette.bgMain.main,
-          padding:'10px 5px',
+          padding:'0',
           '@media(max-width:1040px)':{
             position:'fixed',
             top:'0',
@@ -120,8 +133,8 @@ export default function Navbar() {
           zIndex:'100'
           
         }}>
-          <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} gap={'10px'} mb={'40px'}>
-            <Box component={'img'} src='/assets/Logo.svg' alt='logo' width={'40px'}/>
+          <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} gap={'10px'} mb={'40px'} mx={'5px'} mt={'10px'}>
+          <Box component={'img'} src='/assets/Logo.svg' alt='logo' width={'40px'}/>
             <Typography variant='h2' fontSize={'25px'} color={theme.palette.textColor.header} fontWeight={'500'}>Dashboard.com</Typography>
             <IconButton onClick={()=>handleOpen()} sx={{
               display:'none',
@@ -132,34 +145,45 @@ export default function Navbar() {
                 <XCircleIcon width={'25px'} height={'25px'} color={theme.palette.textColor.text}/>
             </IconButton>
           </Stack>
-          <Stack>
-            <Typography variant='h6' fontSize={'18px'} color={theme.palette.textColor.header} fontWeight={'400'}>CUSTOM</Typography>
-            <NavLink exact to={'/users'} style={navLinksStyles} >
-              <UserIcon width={'22px'} height={'22px'}/>
-              <Typography>User</Typography>
-            </NavLink>
-            <NavLink to={'/categories'} style={navLinksStyles}>
-              <TagIcon width={'22px'} height={'22px'}/>
-              <Typography>Categories</Typography>
-            </NavLink>
-            <NavLink to={'/posts'} style={navLinksStyles}>
-              <BookOpenIcon width={'22px'} height={'22px'}/>
-              <Typography>Posts</Typography>
-            </NavLink>
-            <NavLink to={'/comments'} style={navLinksStyles}>
-            <ChatBubbleLeftRightIcon width={'22px'} height={'22px'}/>
-              <Typography>Comments</Typography>
-            </NavLink>
-          </Stack>
-          <Stack>
-            <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} gap={'10px'} m={'10px'}>
-            <FormControlLabel
-            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-            value={dark}
-            label="Theme"
-            />
+        
+            <Stack mx={'5px'}>
+              <Typography variant='h6' fontSize={'18px'} color={theme.palette.textColor.header} fontWeight={'400'}>CUSTOM</Typography>
+              <NavLink exact to={'/'} style={navLinksStyles} >
+                <HomeIcon width={'22px'} height={'22px'}/>
+                <Typography>Home</Typography>
+              </NavLink>
+              <NavLink exact to={'/users'} style={navLinksStyles} >
+                <UserIcon width={'22px'} height={'22px'}/>
+                <Typography>User</Typography>
+              </NavLink>
+              <NavLink to={'/categories'} style={navLinksStyles}>
+                <TagIcon width={'22px'} height={'22px'}/>
+                <Typography>Categories</Typography>
+              </NavLink>
+              <NavLink to={'/posts'} style={navLinksStyles}>
+                <BookOpenIcon width={'22px'} height={'22px'}/>
+                <Typography>Posts</Typography>
+              </NavLink>
+              <NavLink to={'/comments'} style={navLinksStyles}>
+              <ChatBubbleLeftRightIcon width={'22px'} height={'22px'}/>
+                <Typography>Comments</Typography>
+              </NavLink>
             </Stack>
-          </Stack>
+            <Stack bgcolor={theme.palette.primary.main} m={'20px 10px'} p={'10px'} borderRadius={'10px'} display={'none'} sx={{'@media(max-width:1040px)':{display:'block'},}}>
+              <Typography color={theme.palette.textColor.header} fontSize={'23px'} marginTop={'10px'}>{localStorage.getItem('username')}</Typography>
+              <Button onClick={()=>clearToken()} variant='contained' color='error' sx={{margin:'10px 0'}}>Log-out</Button>
+            </Stack>
+
+            <Stack sx={{ bgcolor:theme.palette.primary.main , borderTopRightRadius:'30px'}} marginTop={'auto'}>
+              <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} gap={'10px'} m={'10px'}>
+                <FormControlLabel
+                control={<MaterialUISwitch checked={dark} onChange={handleTheme} sx={{ m: 1 }}  />}
+                label="Theme"
+                sx={{color:theme.palette.textColor.header, fontWeight:'600'}}
+                />
+              </Stack>
+            </Stack>
+          
         </Box>
         <Stack sx={{
           position:'fixed',

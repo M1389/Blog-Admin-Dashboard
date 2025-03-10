@@ -41,7 +41,8 @@ export default function Footer() {
             <Typography variant='h6' sx={{
               color:'white',
               margin:'40px 0',
-              rotate:'90deg'
+              rotate:'90deg',
+              color:theme.palette.textColor.header
             }}>
               {username}
             </Typography>

@@ -108,10 +108,10 @@ export default function Users() {
           }
         }}>
           <Stack display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Name</Typography> </Stack>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Role</Typography> </Stack>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Phone Number</Typography> </Stack>
-            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.main} fontSize={'18px'}>Id</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.header} fontSize={'18px'}>Name</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.header} fontSize={'18px'}>Role</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.header} fontSize={'18px'}>Phone Number</Typography> </Stack>
+            <Stack width={'30%'} display={'flex'} flexDirection={'row'} alignItems={'center'} m={'5px 0'} p={'10px 10px'}> <Typography variant='h6' color={theme.palette.textColor.header} fontSize={'18px'}>Id</Typography> </Stack>
             <Stack width={'11%'} display={'flex'} flexDirection={'row'} alignItems={'center'}> <Typography variant='h6' color='white' fontSize={'18px'}>Edit</Typography> </Stack>
             
             

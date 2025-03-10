@@ -1,7 +1,9 @@
 import { createTheme } from '@mui/material/styles';  
 
 const lightTheme = createTheme({  
-  palette: {  
+  
+  palette: {
+    mode:'light',  
     mode: 'light', // Set to light mode  
     primary: {  
       main: '#2980b9', // Light blue for primary actions  

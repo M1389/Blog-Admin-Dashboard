@@ -6,13 +6,18 @@ import {Category, Users, Posts, Comments, NotFound, Home , UserUpdate, CategoryU
 import { Login , Register } from './Pages/Auth';
 import { Toaster } from 'react-hot-toast';
 import authSlice from './Store/authSlice';
-import { Box } from '@mui/material';
+import { Box, ThemeProvider } from '@mui/material';
+import theme from './components/Theme/theme';
+import lightTheme from './components/Theme/lightTheme';
 export default function App() {
   const token = authSlice((state)=> state.token)
+  const userTheme = authSlice((state)=> state.theme)
+  
 
   const navigate = useNavigate()
   return (
     <>
+    <ThemeProvider theme={userTheme ? lightTheme : theme}>
       <Box display={'flex'} flexDirection={'row'}  height={'100vh'} flexGrow={1} >
       <Navbar/>
       
@@ -42,6 +47,7 @@ export default function App() {
       <Footer/>
       <Toaster/>
       </Box>
+    </ThemeProvider>
     </>
   )
 }

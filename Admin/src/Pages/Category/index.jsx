@@ -145,6 +145,10 @@ export default function Category() {
     <>
       <Box component={'section'} width={'80%'} p={'30px 30px'} sx={{
         overflowY:'scroll',
+        '&::-webkit-scrollbar': {  
+          display: 'none',       // For WebKit browsers  
+          },  
+        scrollbarWidth: 'none',
         '@media(max-width:1100px)':{
           margin:'30px auto'
         },
