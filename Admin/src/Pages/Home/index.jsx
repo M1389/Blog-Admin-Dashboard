@@ -129,7 +129,7 @@ export default function Home() {
             color={theme.palette.primary.main}
             fontStyle={'italic'}
           >
-            {time} {time?.hours >=12 ? "PM" : "AM"}
+            {time}
           </Typography>
           <Divider
             sx={{
